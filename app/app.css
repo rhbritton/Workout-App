@@ -273,13 +273,44 @@ form .field select {
 .info {
 	background-color: white;
 	padding: 1em;
+	padding-bottom: 1.5em;
+	padding-top: 0.5em;
+}
+
+.info .time, .info .weight {
+	font-size: 0.75em;
 }
 
 .info .time {
-	font-size: 0.75em;
+	float: left;
+}
+
+.info .weight {
+	float: right;
 }
 
 .info .time img, .info .weight img {
 	height: 0.75em;
 	margin-right: 0.5em;
+}
+
+.heading a {
+	display: inline-block;
+}
+
+.title {
+	display: inline-block;
+	float: right;
+	text-align: right;
+}
+
+.title .label {
+	margin-bottom: 0;
+	margin-top: 0;
+	font-size: 0.5em;
+}
+
+.title .name {
+	margin-top: 0;
+	font-size: 0.75em;
 }
