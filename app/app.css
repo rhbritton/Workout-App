@@ -1,30 +1,239 @@
+/*
+Themes
+Blue
+http://paletton.com/#uid=13x0h0ksvlLk6t6pBqHwEhyHNcd
+Orange
+http://paletton.com/#uid=10I0h0kllllaFw0g0qFqFg0w0aF
+*/
+
 /* app css stylesheet */
 
-.menu {
-  list-style: none;
-  border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
-  padding: 0 0 0.5em;
+html, body {
+    background-color: #cceeee;
+    margin: 0;
+    padding: 0;
+	width: 100%;
+	font-family: 'Droid Serif', serif;
 }
 
-.menu:before {
-  content: "[";
+ul {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
 }
 
-.menu:after {
-  content: "]";
+button, .button {
+	margin-top: 1em;
+	background-color: #D5772A;
+	padding: 0.75em 1.5em;
+	color: white;
+	font-weight: bold;
+	border-radius: 0.25em;
+	border: none;
+	text-decoration: none;
 }
 
-.menu > li {
-  display: inline;
+.pad {
+	position: relative;
+    padding: 0 1em;
+    margin: auto;
+    margin-top: 0;
 }
 
-.menu > li:before {
-  content: "|";
-  padding-right: 0.3em;
+.content {
+	position: relative;
+	height: 3em;
+	width: 40em;
+    max-width: 100%;
+    margin: auto;
 }
 
-.menu > li:nth-child(1):before {
-  content: "";
-  padding: 0;
+.exerciseButton {
+	font-weight: bold;
+	margin-top: 1em;
+}
+
+div.center {
+	text-align: center;
+}
+
+header.main {
+	background-color: #00a4a4;
+	color: white;
+	margin-top: 0em;
+}
+
+.time {
+	font-size: 2em;
+}
+
+h1.heading img {
+	height: 0.75em;
+}
+
+h1.heading span {
+	margin-top: 1em;
+}
+
+h1.heading {
+	margin: 0.25em;
+	margin-top: 0.5em;
+	width: 100%;
+	display: inline-block;
+	font-size: 1.25em;
+	font-weight: 100;
+}
+h1.heading a {
+	color: white;
+	text-decoration:none;
+	margin-right: 0.5em;
+}
+
+
+
+
+/* HOME */
+
+a.addWorkout {
+	color: white;
+	position: absolute;
+	right: 0em;
+	top: 0.2rem;
+	font-size: 2em;
+	padding: 0 0.5em;
+	margin: 0;
+	text-decoration: none;
+}
+a.addWorkout img {
+	height: 3em;
+}
+
+a.performWorkout, a.deleteWorkout {
+	height: auto;
+	display: inline-block;
+	border-radius: 0.25em;
+}
+a.performWorkout {
+	background-color: #00a4a4;
+}
+a.deleteWorkout {
+	background-color: #c00;
+	float: right;
+}
+a.performWorkout img {
+	height: 0.75em;
+}
+a.deleteWorkout img {
+	height: 0.75em;
+}
+
+li.workout {
+	position: relative;
+	border: 1px solid #ccc;
+	color: #444;
+	background-color: white;
+	padding: 1em;
+	margin-top: 1em;
+}
+
+li.workout h2 {
+	display: inline;
+	font-size: 1em;
+	padding: 0;
+	margin: 0;
+	color: #00a4a4;
+}
+
+li.workout .buttons {
+	display: block;
+	margin-top: 1em;
+}
+
+li.workout .buttons a {
+	color: white;
+	text-decoration: none;
+	padding: 0.25em 0.5em;
+	cursor:pointer;
+}
+
+li.workout .buttons a span {
+	height: 100%;
+    vertical-align: middle;
+    padding-left: 0.25em;
+}
+
+/* ADD WORKOUT */
+
+form {
+	position: relative;
+	width: 100%;
+}
+
+form .field {
+	position: relative;
+	display: block;
+	width: 100%;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+form .small {
+	display: inline-block;
+	width: 40%;
+}
+
+form .small.right {
+	float: right;
+}
+
+form .field label {
+	display: block;
+	width: 100%;
+	font-size: 0.75em;
+	font-weight: bold;
+}
+
+form .field input {
+	width: 100%;
+	font-size: 1.25em;
+	padding: 0.25em;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+}
+
+form .field select {
+	width: 100%;
+	font-size: 1.25em;
+	padding: 0.25em;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+}
+
+.exercise {
+	border: 1px solid #eFbF9F;
+	background:#F7AF3A;
+	padding: 1em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.addExerciseButton {
+	font-size: 0.75em;
+	background-color: #F7AF3A;
+}
+
+.addWorkoutForm button[type="submit"] {
+	background-color: #00a4a4;
+	margin-bottom: 1em;
+	float: right;
+}
+
+.deleteExercise {
+	height: 1em;
+	float: right;
+	cursor: pointer;
 }
