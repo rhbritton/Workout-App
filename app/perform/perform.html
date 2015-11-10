@@ -1,34 +1,53 @@
 <header class="main">
 	<div class="pad">
 		<div class="content">
-			<h1 class="heading"><a href="./#/home">Work Me Out!</a></h1>
+			<h1 class="heading">
+				<a href="./#/home">
+					<img src="./assets/images/back.png" />
+				</a>
+				<span>Perform Workout</span>
+				<span>{{workout.name}}</span>
+			</h1>
 		</div>
 	</div>
 </header>
 
 <div class="pad">
 	<div class="content">
-		<div style="margin:0;height: 1em;width:{{percentageComplete}}%;background-color: #9fa8a3;"></div>
+		<div class="progress" style="width:{{percentageComplete}}%;"></div>
 
+		<div class="progressControls">
+			<a class="button prev" href="./#/perform?workout={{workoutIndex}}&exercise={{exerciseIndex-1}}" ng-click="pauseExerciseClick()" ng-if="!firstExercise">Previous</a>
 
-		<a href="./#/home" ng-click="pauseExerciseClick()" ng-if="lastExercise">End Workout!</a>
-		<a class="button" href="./#/perform?workout={{workoutIndex}}&exercise={{exerciseIndex+1}}" ng-click="pauseExerciseClick()" ng-if="!lastExercise">Next</a>
-
-		<h1>{{workout.name}}</h1>
-
-		<h2>
-			{{exercise.name}}<span ng-if="exercise.weight"><br/>with {{exercise.weight}} lbs</span>
-			<span ng-if="exercise.type == 'reps'"><br/>for {{exercise.amount}} reps</span>
-			<span ng-if="exercise.type == 'time'"><br/>for {{exercise.amount}} seconds</span>
-		</h2>
-
-		<div class="center">
-			<div class="time">{{timeText}}</div>
-
-			<button class="exerciseButton" ng-click="startExercise()" ng-if="!exercising">Exercise!</button>
-			<button class="exerciseButton" ng-click="pauseExerciseClick()" ng-if="exercising">Pause Exercise</button>
+			<a href="./#/home" class="button next" ng-click="pauseExerciseClick()" ng-if="lastExercise">End Workout!</a>
+			<a class="button next" href="./#/perform?workout={{workoutIndex}}&exercise={{exerciseIndex+1}}" ng-click="pauseExerciseClick()" ng-if="!lastExercise">Next</a>
 		</div>
 
-	
+		<div>
+
+			<h2 class="info">
+				{{exercise.name}}
+				<div>
+					<span class="time" ng-if="exercise.type == 'reps'">
+						<img src="./assets/images/reps.png" />{{exercise.amount}} reps
+					</span>
+					<span class="time" ng-if="exercise.type == 'time'">
+						<img src="./assets/images/time.png" />{{exercise.amount}}s
+					</span>
+					<span class="weight" ng-if="exercise.weight">
+						<img src="./assets/images/weight.png" />{{exercise.weight}} lbs
+					</span>
+				</div>
+			</h2>
+
+			<div class="center">
+				<div class="time">{{timeText}}</div>
+
+				<button class="exerciseButton" ng-click="startExercise()" ng-if="!exercising">Exercise!</button>
+				<button class="exerciseButton" ng-click="pauseExerciseClick()" ng-if="exercising">Pause Exercise</button>
+			</div>
+		</div>
+
+		<div style="display:block;clear:both;"></div>
 	</div>
 </div>

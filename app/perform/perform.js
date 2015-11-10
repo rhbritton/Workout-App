@@ -32,6 +32,9 @@ angular.module('myApp.perform', ['ngRoute'])
 	if($scope.exerciseIndex == $scope.workout.exercises.length-1)
 		$scope.lastExercise = true
 
+	if($scope.exerciseIndex == 0)
+		$scope.firstExercise = true
+
 	$scope.time = 0
 	$scope.timeText = '00:00'
 	$scope.exercising = false

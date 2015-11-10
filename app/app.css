@@ -23,14 +23,18 @@ ul {
 }
 
 button, .button {
-	margin-top: 1em;
-	background-color: #D5772A;
+	background-color: #00a4a4;
 	padding: 0.75em 1.5em;
 	color: white;
 	font-weight: bold;
 	border-radius: 0.25em;
 	border: none;
 	text-decoration: none;
+	border-bottom: 2px solid #aaa;
+}
+
+button:active, .button:active {
+	border-bottom: 2px solid transparent;
 }
 
 .pad {
@@ -61,6 +65,7 @@ header.main {
 	background-color: #00a4a4;
 	color: white;
 	margin-top: 0em;
+	border-bottom: 1px solid #aaa;
 }
 
 .time {
@@ -72,7 +77,8 @@ h1.heading img {
 }
 
 h1.heading span {
-	margin-top: 1em;
+	float: right;
+	margin-right: 0.5em;
 }
 
 h1.heading {
@@ -215,9 +221,8 @@ form .field select {
 
 .exercise {
 	border: 1px solid #eFbF9F;
-	background:#F7AF3A;
+	background:#EEE7CC;
 	padding: 1em;
-	margin-top: 1em;
 	margin-bottom: 1em;
 }
 
@@ -236,4 +241,45 @@ form .field select {
 	height: 1em;
 	float: right;
 	cursor: pointer;
+}
+
+.prev {
+	margin: 0;
+	float: left;
+	font-size: 0.75em;
+	background-color: #F7AF3A;
+}
+
+.next {
+	margin: 0;
+	float: right;
+	font-size: 0.75em;
+	background-color: #F7AF3A;
+}
+
+.progress {
+	min-width: 5px;
+	margin: 0;
+	height: 0.25em;
+	background-color: #F7AF3A;
+	margin-top: 0em;
+	margin-bottom: 1em;
+}
+
+.progressControls {
+	height: 3em;
+}
+
+.info {
+	background-color: white;
+	padding: 1em;
+}
+
+.info .time {
+	font-size: 0.75em;
+}
+
+.info .time img, .info .weight img {
+	height: 0.75em;
+	margin-right: 0.5em;
 }

@@ -13,11 +13,11 @@
 			<li class="workout" ng-repeat="workout in workouts">
 				<h2>{{workout.name}}</h2>
 				<div class="buttons">
-					<a class="performWorkout" href="./#/perform?workout={{$index}}">
+					<a class="performWorkout button" href="./#/perform?workout={{$index}}">
 						<img src="./assets/images/perform.png" />
 						<span>Perform</span>
 					</a>
-					<a class="deleteWorkout" ng-click="delWorkout($index)">
+					<a class="deleteWorkout button" ng-click="delWorkout($index)">
 						<img src="./assets/images/delete.png" />
 						<span>Delete</span>
 					</a>
