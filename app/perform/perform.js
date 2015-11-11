@@ -19,8 +19,6 @@ angular.module('myApp.perform', ['ngRoute'])
 	$scope.workoutIndex = parseInt($routeParams.workout || 0)
 	$scope.exerciseIndex = parseInt($routeParams.exercise || 0)
 
-	console.log($scope.exerciseIndex)
-
 	$scope.workout = workouts[$scope.workoutIndex] || null
 	if(!$scope.workout) return
 
@@ -41,8 +39,10 @@ angular.module('myApp.perform', ['ngRoute'])
 
 	if($scope.exercise.type == 'time') formatTime($scope.exercise.amount)
 
-	$scope.startExercise = function() {
-		audio.play()
+	$scope.startExercise = function(skipSound) {
+		if(!skipSound)
+			audio.play()
+
 		if(!$scope.exercising) {
 			pauseExercise = $interval(function() {
 				$scope.time++
@@ -52,8 +52,13 @@ angular.module('myApp.perform', ['ngRoute'])
 
 				if($scope.exercise.type == 'time') {
 					if($scope.exercise.amount - $scope.time < 0) {
-						$scope.pauseExerciseClick()
-						return $window.location.href = '/app/#/perform?workout='+$scope.workoutIndex+'&exercise='+($scope.exerciseIndex+1)
+						$scope.pauseExerciseClick(true)
+						if($scope.lastExercise) {
+							return $window.location.href = '/app/#/'
+						} else {
+							return $window.location.href = '/app/#/perform?workout='+$scope.workoutIndex+'&exercise='+($scope.exerciseIndex+1)
+						}
+
 					}
 
 					formatTime($scope.exercise.amount - $scope.time)
@@ -64,8 +69,9 @@ angular.module('myApp.perform', ['ngRoute'])
 		$scope.exercising = true
 	}
 
-	$scope.pauseExerciseClick = function() {
-		audio.play()
+	$scope.pauseExerciseClick = function(skipSound) {
+		if(!skipSound)
+			audio.play()
 		$scope.exercising = false
 		
 		pauseExercise ? $interval.cancel(pauseExercise) : null
@@ -80,5 +86,7 @@ angular.module('myApp.perform', ['ngRoute'])
 
 		$scope.timeText = minutes + ':' + seconds
 	}
+
+	$scope.startExercise()
 
 }])
