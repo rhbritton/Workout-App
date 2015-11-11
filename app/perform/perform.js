@@ -11,6 +11,7 @@ angular.module('myApp.perform', ['ngRoute'])
 
 .controller('PerformCtrl', ['$scope', '$location', '$routeParams', '$interval', '$window', function($scope, $location, $routeParams, $interval, $window) {
 	var audio = new Audio('/app/assets/sounds/beep.mp3')
+	  , voice = window.speechSynthesis.getVoices()[0]
 
 	var workouts = localStorage.getItem('workouts')
 	  , workouts = workouts ? JSON.parse(workouts) : []
@@ -39,29 +40,32 @@ angular.module('myApp.perform', ['ngRoute'])
 
 	if($scope.exercise.type == 'time') formatTime($scope.exercise.amount)
 
-	$scope.startExercise = function(skipSound) {
-		if(!skipSound)
-			audio.play()
-
+	$scope.startExercise = function(allowSpeak) {
 		if(!$scope.exercising) {
 			pauseExercise = $interval(function() {
 				$scope.time++
+
+				var timeLeft = $scope.exercise.amount - $scope.time
 
 				if($scope.exercise.type == 'reps')
 					formatTime($scope.time)
 
 				if($scope.exercise.type == 'time') {
-					if($scope.exercise.amount - $scope.time < 0) {
+					if(timeLeft <= 0) {
 						$scope.pauseExerciseClick(true)
 						if($scope.lastExercise) {
+							speak('Workout Complete')
 							return $window.location.href = '/app/#/'
 						} else {
+							speak($scope.workout.exercises[$scope.exerciseIndex+1].name)
 							return $window.location.href = '/app/#/perform?workout='+$scope.workoutIndex+'&exercise='+($scope.exerciseIndex+1)
 						}
-
 					}
 
-					formatTime($scope.exercise.amount - $scope.time)
+					if(timeLeft <= 3)
+						speak(timeLeft)
+
+					formatTime(timeLeft)
 				}
 			}, 1000)
 		}
@@ -70,11 +74,13 @@ angular.module('myApp.perform', ['ngRoute'])
 	}
 
 	$scope.pauseExerciseClick = function(skipSound) {
-		if(!skipSound)
-			audio.play()
 		$scope.exercising = false
 		
 		pauseExercise ? $interval.cancel(pauseExercise) : null
+	}
+
+	$scope.pop = function() {
+		audio.play()
 	}
 
 	function formatTime(time) {
@@ -87,6 +93,14 @@ angular.module('myApp.perform', ['ngRoute'])
 		$scope.timeText = minutes + ':' + seconds
 	}
 
-	$scope.startExercise()
+	function speak(text) {
+		var speech = new SpeechSynthesisUtterance(text)
+		speech.voice = voice
+		$window.speechSynthesis.speak(speech)
+	}
+
+
+	if(!$routeParams.wait)
+		$scope.startExercise()
 
 }])
