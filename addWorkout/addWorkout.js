@@ -37,6 +37,6 @@ angular.module('myApp.addWorkout', ['ngRoute'])
 
 		localStorage.setItem('workouts', JSON.stringify(workouts))
 
-		$location.path('/app/#/home')
+		$location.path('/#/home')
 	}
 }])

@@ -2,8 +2,8 @@
 	<div class="pad">
 		<div class="content">
 			<h1 class="heading">
-				<a href="./#/home">
-					<img src="./assets/images/back.png" />
+				<a href="/#/home">
+					<img src="/assets/images/back.png" />
 				</a>
 				<span>Create Workout</span>
 			</h1>
@@ -22,7 +22,7 @@
 				<label>Exercises</label>
 				<ul class="exercises">
 					<li class="exercise" ng-repeat="exercise in exercises">
-						<img class="deleteExercise" ng-click="delExercise($index)" src="./assets/images/close.png" />
+						<img class="deleteExercise" ng-click="delExercise($index)" src="/assets/images/close.png" />
 						<div class="field">
 							<label>Exercise Name</label>
 							<input ng-required="true" ng-model="exercise.name" type="text" />

@@ -10,7 +10,7 @@ angular.module('myApp.perform', ['ngRoute'])
 }])
 
 .controller('PerformCtrl', ['$scope', '$location', '$routeParams', '$interval', '$window', function($scope, $location, $routeParams, $interval, $window) {
-	var audio = new Audio('/app/assets/sounds/beep.mp3')
+	var audio = new Audio('/assets/sounds/beep.mp3')
 	  , voice = window.speechSynthesis.getVoices()[0]
 
 	var workouts = localStorage.getItem('workouts')
@@ -55,10 +55,10 @@ angular.module('myApp.perform', ['ngRoute'])
 						$scope.pauseExerciseClick(true)
 						if($scope.lastExercise) {
 							speak('Workout Complete')
-							return $window.location.href = '/app/#/'
+							return $window.location.href = '/#/home'
 						} else {
 							speak($scope.workout.exercises[$scope.exerciseIndex+1].name)
-							return $window.location.href = '/app/#/perform?workout='+$scope.workoutIndex+'&exercise='+($scope.exerciseIndex+1)
+							return $window.location.href = '/#/perform?workout='+$scope.workoutIndex+'&exercise='+($scope.exerciseIndex+1)
 						}
 					}
 
