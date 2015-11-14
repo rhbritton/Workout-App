@@ -11,7 +11,7 @@ angular.module('myApp.perform', ['ngRoute'])
 
 .controller('PerformCtrl', ['$scope', '$location', '$routeParams', '$interval', '$window', function($scope, $location, $routeParams, $interval, $window) {
 	var audio = new Audio('/app/assets/sounds/beep.mp3')
-	  , voice = window.speechSynthesis.getVoices()[0]
+	  , voice = window.speechSynthesis.getVoices()[1]
 
 	var workouts = localStorage.getItem('workouts')
 	  , workouts = workouts ? JSON.parse(workouts) : []
