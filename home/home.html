@@ -1,0 +1,28 @@
+<header class="main">
+	<div class="pad">
+		<div class="content">
+			<h1 class="heading">My Workouts</h1>
+			<a class="addWorkout" href="/#/addWorkout">+</a>
+		</div>
+	</div>
+</header>
+
+<div class="pad">
+	<div class="content">
+		<ul class="workouts">
+			<li class="workout" ng-repeat="workout in workouts">
+				<h2>{{workout.name}}</h2>
+				<div class="buttons">
+					<a class="performWorkout button" href="./#/perform?workout={{$index}}&wait=true">
+						<img src="/assets/images/perform.png" />
+						<span>Perform</span>
+					</a>
+					<a class="deleteWorkout button" ng-click="delWorkout($index)">
+						<img src="/assets/images/delete.png" />
+						<span>Delete</span>
+					</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
