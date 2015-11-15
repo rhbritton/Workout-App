@@ -21,7 +21,7 @@
 		<div class="progressControls">
 			<a class="button prev" href="./#/perform?workout={{workoutIndex}}&exercise={{exerciseIndex-1}}&wait=true" ng-click="pauseExerciseClick(true);pop()" ng-if="!firstExercise">Previous</a>
 
-			<a href="./#/home" class="button next" ng-click="pauseExerciseClick()" ng-if="lastExercise">End Workout!</a>
+			<a href="./#/home" class="button next" ng-click="pauseExerciseClick();pop()" ng-if="lastExercise">End Workout!</a>
 			<a class="button next" href="./#/perform?workout={{workoutIndex}}&exercise={{exerciseIndex+1}}&wait=true" ng-click="pauseExerciseClick(true);pop()" ng-if="!lastExercise">Next</a>
 		</div>
 

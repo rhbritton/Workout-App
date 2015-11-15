@@ -10,8 +10,8 @@ angular.module('myApp.perform', ['ngRoute'])
 }])
 
 .controller('PerformCtrl', ['$scope', '$location', '$routeParams', '$interval', '$window', function($scope, $location, $routeParams, $interval, $window) {
-	var audio = new Audio('/assets/sounds/beep.mp3')
-	  , voice = window.speechSynthesis.getVoices()[1]
+	var pop = new Audio('/assets/sounds/beep.mp3')
+	  , voice = $window.speechSynthesis.getVoices()[2]
 
 	var workouts = localStorage.getItem('workouts')
 	  , workouts = workouts ? JSON.parse(workouts) : []
@@ -67,9 +67,9 @@ angular.module('myApp.perform', ['ngRoute'])
 							return $window.location.href = '/#/perform?workout='+$scope.workoutIndex+'&exercise='+($scope.exerciseIndex+1)
 						}
 					}
-
+					
 					if(isHalfTime)
-						speak('You are half way there')
+						speak('Half Way')
 
 					if(!isHalfTime && timeLeft <= 3)
 						speak(timeLeft)
@@ -89,7 +89,7 @@ angular.module('myApp.perform', ['ngRoute'])
 	}
 
 	$scope.pop = function() {
-		audio.play()
+		pop.play()
 	}
 
 	function formatTime(time) {

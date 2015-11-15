@@ -10,7 +10,9 @@ angular.module('myApp.home', ['ngRoute'])
 }])
 
 .controller('HomeCtrl', ['$scope', function($scope) {
-	var workouts = localStorage.getItem('workouts')
+	var pop = new Audio('/assets/sounds/beep.mp3')
+	  , workouts = localStorage.getItem('workouts')
+	  
 	$scope.workouts = workouts ? JSON.parse(workouts) : []
 
 	$scope.delWorkout = function(index) {
@@ -21,6 +23,10 @@ angular.module('myApp.home', ['ngRoute'])
 
 			localStorage.setItem('workouts', JSON.stringify($scope.workouts))
 		}
+	}
+
+	$scope.pop = function() {
+		pop.play()
 	}
 
 }])

@@ -10,7 +10,8 @@ angular.module('myApp.addWorkout', ['ngRoute'])
 }])
 
 .controller('AddWorkoutCtrl', ['$scope', '$location', function($scope, $location) {
-
+	var pop = new Audio('/assets/sounds/beep.mp3')
+	
 	$scope.exercises = []
 
 	$scope.addExercise = function() {
@@ -38,5 +39,9 @@ angular.module('myApp.addWorkout', ['ngRoute'])
 		localStorage.setItem('workouts', JSON.stringify(workouts))
 
 		$location.path('/#/home')
+	}
+
+	$scope.pop = function() {
+		pop.play()
 	}
 }])

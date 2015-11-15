@@ -2,7 +2,7 @@
 	<div class="pad">
 		<div class="content">
 			<h1 class="heading">
-				<a href="/#/home">
+				<a href="/#/home" ng-click="pop()">
 					<img src="/assets/images/back.png" />
 				</a>
 				<span>Create Workout</span>
@@ -22,7 +22,7 @@
 				<label>Exercises</label>
 				<ul class="exercises">
 					<li class="exercise" ng-repeat="exercise in exercises">
-						<img class="deleteExercise" ng-click="delExercise($index)" src="/assets/images/close.png" />
+						<img class="deleteExercise" ng-click="delExercise($index);pop()" src="/assets/images/close.png" />
 						<div class="field">
 							<label>Exercise Name</label>
 							<input ng-required="true" ng-model="exercise.name" type="text" />
@@ -58,9 +58,9 @@
 						
 						
 				    </li>
-				<button type="button" class="addExerciseButton" ng-click="addExercise()">Add Exercise</button>
+				<button type="button" class="addExerciseButton" ng-click="addExercise();pop()">Add Exercise</button>
 			</div>
-			<button type="submit">Create Workout</button>
+			<button type="submit" ng-click="pop()">Create Workout</button>
 		</form>
 	</div>
 </div>

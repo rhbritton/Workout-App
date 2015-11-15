@@ -2,7 +2,7 @@
 	<div class="pad">
 		<div class="content">
 			<h1 class="heading">My Workouts</h1>
-			<a class="addWorkout" href="/#/addWorkout">+</a>
+			<a class="addWorkout" href="/#/addWorkout" ng-click="pop()">+</a>
 		</div>
 	</div>
 </header>
@@ -13,11 +13,11 @@
 			<li class="workout" ng-repeat="workout in workouts">
 				<h2>{{workout.name}}</h2>
 				<div class="buttons">
-					<a class="performWorkout button" href="./#/perform?workout={{$index}}&wait=true">
+					<a class="performWorkout button" href="./#/perform?workout={{$index}}&wait=true" ng-click="pop()">
 						<img src="/assets/images/perform.png" />
 						<span>Perform</span>
 					</a>
-					<a class="deleteWorkout button" ng-click="delWorkout($index)">
+					<a class="deleteWorkout button" ng-click="delWorkout($index);pop()">
 						<img src="/assets/images/delete.png" />
 						<span>Delete</span>
 					</a>
